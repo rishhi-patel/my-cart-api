@@ -1,12 +1,12 @@
-const mongoose  = require('mongoose')
-const dotenv = require('dotenv'
-const colors = require('colors'
-const users = require('./data/users.js'
-const products = require('./data/products.js'
-const User = require('./models/userModel.js'
-const Product = require('./models/productModel.js'
-const Order = require('./models/orderModel.js'
-const connectDB = require('./config/db.js'
+const mongoose = require("mongoose")
+const dotenv = require("dotenv")
+const colors = require("colors")
+const users = require("./data/users.js")
+const products = require("./data/products.js")
+const User = require("./models/userModel.js")
+const Product = require("./models/productModel.js")
+const Order = require("./models/orderModel.js")
+const connectDB = require("./config/db.js")
 
 dotenv.config()
 
@@ -19,7 +19,6 @@ const constData = async () => {
     await User.deleteMany()
 
     const createdUsers = await User.insertMany(users)
-
     const adminUser = createdUsers[0]._id
 
     const sampleProducts = products.map((product) => {
@@ -28,7 +27,7 @@ const constData = async () => {
 
     await Product.insertMany(sampleProducts)
 
-    console.log('Data consted!'.green.inverse)
+    console.log("Data consted!".green.inverse)
     process.exit()
   } catch (error) {
     console.error(`${error}`.red.inverse)
@@ -42,7 +41,7 @@ const destroyData = async () => {
     await Product.deleteMany()
     await User.deleteMany()
 
-    console.log('Data Destroyed!'.red.inverse)
+    console.log("Data Destroyed!".red.inverse)
     process.exit()
   } catch (error) {
     console.error(`${error}`.red.inverse)
@@ -50,7 +49,7 @@ const destroyData = async () => {
   }
 }
 
-if (process.argv[2] === '-d') {
+if (process.argv[2] === "-d") {
   destroyData()
 } else {
   constData()

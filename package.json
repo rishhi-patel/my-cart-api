@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node index",
     "server": "nodemon index",
-    "data:const": "node src/seeder",
-    "data:destroy": "node src/seeder -d"
+    "data:import": "node seeder",
+    "data:destroy": "seeder -d"
   },
   "author": "Fenyx",
   "license": "",
