@@ -1,5 +1,5 @@
-import asyncHandler from 'express-async-handler'
-import Order from '../models/orderModel.js'
+const asyncHandler = require("express-async-handler")
+const Order = require("../models/orderModel.js")
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -17,7 +17,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
   if (orderItems && orderItems.length === 0) {
     res.status(400)
-    throw new Error('No order items')
+    throw new Error("No order items")
     return
   } else {
     const order = new Order({
@@ -42,15 +42,15 @@ const addOrderItems = asyncHandler(async (req, res) => {
 // @access  Private
 const getOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate(
-    'user',
-    'name email'
+    "user",
+    "name email"
   )
 
   if (order) {
     res.json(order)
   } else {
     res.status(404)
-    throw new Error('Order not found')
+    throw new Error("Order not found")
   }
 })
 
@@ -79,7 +79,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     orderItems.map((product) => console.log(orderitems._id))
   } else {
     res.status(404)
-    throw new Error('Order not found')
+    throw new Error("Order not found")
   }
 })
 
@@ -98,7 +98,7 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
     res.json(updatedOrder)
   } else {
     res.status(404)
-    throw new Error('Order not found')
+    throw new Error("Order not found")
   }
 })
 
@@ -114,11 +114,11 @@ const getMyOrders = asyncHandler(async (req, res) => {
 // @route   GET /api/orders
 // @access  Private/Admin
 const getOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({}).populate('user', 'id name')
+  const orders = await Order.find({}).populate("user", "id name")
   res.json(orders)
 })
 
-export {
+module.exports = {
   addOrderItems,
   getOrderById,
   updateOrderToPaid,
