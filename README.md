@@ -1,5 +1,5 @@
-# my-cart-pro
-![image](https://user-images.githubusercontent.com/53328265/162624863-065ab2f9-3dc9-4401-a90d-c0dbe3cf9273.png)
+# my-cart-api
+
 
 ## Features
 
@@ -33,6 +33,5 @@ PAYPAL_CLIENT_ID = your paypal client id
 
 ```
 npm install
-cd frontend
-npm install
+npm run server
 ```
